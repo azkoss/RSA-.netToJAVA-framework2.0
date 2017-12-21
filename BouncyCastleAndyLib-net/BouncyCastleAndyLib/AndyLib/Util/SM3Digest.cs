@@ -174,9 +174,9 @@ namespace AndyLib.Util
         public static string SM3(string content)
         {
             byte[] md = new byte[32];
-            byte[] msg1 = Encoding.Default.GetBytes(content);
+            byte[] msg = Encoding.UTF8.GetBytes(content);
             SM3Digest sm3 = new SM3Digest();
-            sm3.BlockUpdate(msg1, 0, msg1.Length);
+            sm3.BlockUpdate(msg, 0, msg.Length);
             sm3.DoFinal(md, 0);
             System.String s = new UTF8Encoding().GetString(Hex.Encode(md));
             System.Console.Out.WriteLine(s.ToUpper());
